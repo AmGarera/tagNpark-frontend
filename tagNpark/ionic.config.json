@@ -1,0 +1,7 @@
+{
+  "name": "tagNpark",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Tag N Park
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>You're on {{plat}}</h1>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Card 2</ion-card-subtitle>
+      <ion-card-title>Example</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+        <img [src]="takenPicture" alt="Select Image"/>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      <ion-button (click)="takePicture()" color="primary">Take A Picture</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
