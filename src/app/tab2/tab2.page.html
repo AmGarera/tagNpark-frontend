@@ -7,7 +7,6 @@
 </ion-header>
 
 <ion-content>
-  <!-- <h1>You're on {{plat}}</h1> -->
   <ion-card>
     <ion-card-header>
       <ion-card-subtitle>Parking Spot </ion-card-subtitle>
@@ -15,7 +14,7 @@
     </ion-card-header>
   
     <ion-card-content>
-      
+        <div id="map" style="height:100%;"></div>
       <!-- <h3 *ngIf="takenPicture">Latitude: {{locationCoordinates.latitude}}</h3>
       <h3 *ngIf="takenPicture">Longitude: {{locationCoordinates.longitude}}</h3> -->
         <img #waterMarkedImage *ngIf="takenPicture"/>
@@ -26,13 +25,23 @@
 
               <ion-item>
                 <ion-label floating>Guest's License Plate:</ion-label>
-                <ion-input autofocus="true" type="text" [placeholder]="'CDV-1684'" ria-placeholder="CDV-1684"></ion-input>
+                <ion-input name="license_plate" autofocus="true" type="text" [placeholder]="'CDV-1684'" ria-placeholder="CDV-1684"></ion-input>
               </ion-item>
             
               <ion-item>
                 <ion-label floating>Visiting Address</ion-label>
                 <ion-input type="password" [placeholder]="'1234 Sample Lane'"></ion-input>
               </ion-item>
+
+              <ion-item>
+                  <ion-label floating>Contact Email</ion-label>
+                  <ion-input type="email" [placeholder]="'me@gmail.com'"></ion-input>
+                </ion-item>
+
+              <ion-item>
+                  <ion-label floating>Contact Phone Number</ion-label>
+                  <ion-input  type="tel" [placeholder]="'123-456-7890'"></ion-input>
+                </ion-item>
             
             </ion-list>
             <ion-button (click)="clearPicture()" color="success">Submit</ion-button>

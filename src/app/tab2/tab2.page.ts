@@ -1,9 +1,10 @@
-import { Component, SecurityContext, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Platform} from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Map, tileLayer, marker, icon } from 'leaflet';
 import * as watermark from 'watermarkjs';
-import { DomSanitizer } from '@angular/platform-browser';
+import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -20,7 +21,7 @@ export class Tab2Page {
   locationCoordinates: any;
   blobImage: Blob;
 
-  constructor(public platform: Platform, private camera: Camera, private geolocation: Geolocation, private sanitizer: DomSanitizer) {
+  constructor(public platform: Platform, private camera: Camera, private geolocation: Geolocation, private http: HttpClient) {
     this.getLatLong();
     console.log(this.platform.platforms());
     this.plat = this.platform.platforms();
