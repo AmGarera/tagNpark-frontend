@@ -1,3 +1,4 @@
+import { AuthService } from './../providers/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,7 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  status: any;
 
-  constructor() {}
+  constructor(private authService: AuthService) {
+    this.authService.isLoggedIn()
+      .subscribe(arg => this.status = arg);
+    
+  }
+    logout() {
+      this.authService.logout();
+    }
+
 
 }

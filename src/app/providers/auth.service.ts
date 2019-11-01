@@ -19,7 +19,7 @@ export class AuthService {
   register(user: User): Observable<AuthResponse> {
     console.log(user);
     return this.httpClient
-      .post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/signup`, user)
+      .post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/api/auth/signup`, user)
       .pipe(
         tap(async (res: AuthResponse) => {
           if (res.user) {
@@ -32,8 +32,10 @@ export class AuthService {
   }
 
   login(user: User): Observable<AuthResponse> {
-    return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/login`, user).pipe(
+    return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/api/auth/login`, user).pipe(
       tap(async (res: AuthResponse) => {
+        console.log(res);
+        
         if (res.user) {
           await this.storage.set('ACCESS_TOKEN', res.user.access_token);
           await this.storage.set('EXPIRES_IN', res.user.expires_in);
