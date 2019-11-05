@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { tap } from "rxjs/operators";
+import { Observable, BehaviorSubject } from "rxjs";
 
-import { Storage } from '@ionic/storage';
-import { User } from '../auth/user';
-import { AuthResponse } from '../auth/auth-response';
+import { Storage } from "@ionic/storage";
+import { User } from "../auth/user";
+import { AuthResponse } from "../auth/auth-response";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
-  AUTH_SERVER_ADDRESS = 'http://localhost:3000';
+  // AUTH_SERVER_ADDRESS = "https://tagnpark-docker.herokuapp.com";
+  AUTH_SERVER_ADDRESS = "http://localhost:3000";
   authSubject = new BehaviorSubject(false);
 
   constructor(private httpClient: HttpClient, private storage: Storage) {}
@@ -23,8 +24,8 @@ export class AuthService {
       .pipe(
         tap(async (res: AuthResponse) => {
           if (res.user) {
-            await this.storage.set('ACCESS_TOKEN', res.user.access_token);
-            await this.storage.set('EXPIRES_IN', res.user.expires_in);
+            await this.storage.set("ACCESS_TOKEN", res.user.access_token);
+            await this.storage.set("EXPIRES_IN", res.user.expires_in);
             this.authSubject.next(true);
           }
         })
@@ -32,22 +33,24 @@ export class AuthService {
   }
 
   login(user: User): Observable<AuthResponse> {
-    return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/api/auth/login`, user).pipe(
-      tap(async (res: AuthResponse) => {
-        console.log(res);
+    return this.httpClient
+      .post(`${this.AUTH_SERVER_ADDRESS}/api/auth/login`, user)
+      .pipe(
+        tap(async (res: AuthResponse) => {
+          console.log(res);
 
-        if (res.user) {
-          await this.storage.set('ACCESS_TOKEN', res.user.access_token);
-          await this.storage.set('EXPIRES_IN', res.user.expires_in);
-          this.authSubject.next(true);
-        }
-      })
-    );
+          if (res.user) {
+            await this.storage.set("ACCESS_TOKEN", res.user.access_token);
+            await this.storage.set("EXPIRES_IN", res.user.expires_in);
+            this.authSubject.next(true);
+          }
+        })
+      );
   }
 
   async logout() {
-    await this.storage.remove('ACCESS_TOKEN');
-    await this.storage.remove('EXPIRES_IN');
+    await this.storage.remove("ACCESS_TOKEN");
+    await this.storage.remove("EXPIRES_IN");
     this.authSubject.next(false);
   }
 
