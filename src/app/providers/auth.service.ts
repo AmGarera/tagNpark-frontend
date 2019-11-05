@@ -35,7 +35,7 @@ export class AuthService {
     return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/api/auth/login`, user).pipe(
       tap(async (res: AuthResponse) => {
         console.log(res);
-        
+
         if (res.user) {
           await this.storage.set('ACCESS_TOKEN', res.user.access_token);
           await this.storage.set('EXPIRES_IN', res.user.expires_in);
