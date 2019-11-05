@@ -13,11 +13,30 @@ export class VehicleAddComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private vehicleService: VehiclesService) {}
 
   ngOnInit() {
-    this.form = this.formBuilder.group({});
+    this.form = this.formBuilder.group({
+      vehicleNickname: '',
+      vehicleYear: '',
+      vehicleMake: '',
+      vehicleModel: '',
+      vehiclePlate: '',
+    });
   }
 
   submit(f) {
     console.log(f);
-    this.vehicleService.addVehicle(f);
+    // this.vehicleService.addVehicle(f);
+    let vehicle;
+    
+    vehicle = {
+      nickname: f.value.vehicleNickname,
+      year: f.value.vehicleYear,
+      make: f.value.vehicleMake,
+      model: f.value.vehicleModel,
+      license_plate: f.value.vehiclePlate  
+    }
+
+    this.vehicleService.addVehicle(vehicle).subscribe(data => { console.log(data)});
+    
+    this.form.reset();
   }
 }

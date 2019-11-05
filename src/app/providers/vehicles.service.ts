@@ -5,11 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class VehiclesService {
-  baseURL = '';
+  baseURL = 'http://localhost:3000/';
   constructor(private http: HttpClient) { }
 
 addVehicle(body) {
-  return this.http.post('api/vehicle/add-vehicle', body);
+  return this.http.post(`${this.baseURL}api/vehicle/add-vehicle`, body);
 }
 
 }
