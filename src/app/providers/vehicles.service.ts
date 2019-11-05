@@ -9,7 +9,7 @@ export class VehiclesService {
   constructor(private http: HttpClient) { }
 
 addVehicle(body) {
-  return this.http.post('api/vehicle/addvehicle', body);
+  return this.http.post('api/vehicle/add-vehicle', body);
 }
 
 }

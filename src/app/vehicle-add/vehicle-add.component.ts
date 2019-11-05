@@ -17,6 +17,7 @@ export class VehicleAddComponent implements OnInit {
   }
 
   submit(f) {
+    console.log(f);
     this.vehicleService.addVehicle(f);
   }
 }
