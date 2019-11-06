@@ -18,7 +18,7 @@ loadAllModels(make) {
 }
 
 addVehicle(body) {
-  return this.http.post(`${this.baseURL}/api/vehicle/add-vehicle`, body);
+  return this.http.post(`${this.baseURL}/api/vehicle/add`, body);
 }
 
 }
