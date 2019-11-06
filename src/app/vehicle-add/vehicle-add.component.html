@@ -9,7 +9,6 @@
 <ion-content fullscreen>
     <ion-row color="primary" justify-content-center>
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-        <ion-input>
           <form [formGroup]="form" (ngSubmit)="submit(form)">
             <ion-list lines="full" class="ion-no-margin ion-no-padding">
               <!-- Vehicle Nickname -->
@@ -26,24 +25,22 @@
                   <ion-select-option value="2004">2004</ion-select-option>
                 </ion-select>
               </ion-item>
+            <!-- Vehicle Make -->
+            <ion-item>
+              <ion-label>Make</ion-label>
+              <ion-select formControlName="vehicleMake" (ionChange)="loadModels($event)">
+                <ion-select-option *ngFor="let item of makes" value="{{item.Make_Name}}"> {{item.Make_Name}} </ion-select-option>
+              </ion-select>
+            </ion-item>
 
-              <!-- Vehicle Make -->
-              <ion-item>
-                <ion-label>Make</ion-label>
-                <ion-select formControlName="vehicleMake">
-                  <ion-select-option value="audi">Audi</ion-select-option>
-                  <ion-select-option value="bmw">BMW</ion-select-option>
-                </ion-select>
-              </ion-item>
-
-              <!-- Vehicle Model -->
-              <ion-item>
-                <ion-label>Model</ion-label>
-                <ion-select formControlName="vehicleModel">
-                  <ion-select-option value="s5">S5</ion-select-option>
-                  <ion-select-option value="m3">M3</ion-select-option>
-                </ion-select>
-              </ion-item>
+            <!-- Vehicle Model -->
+            <ion-item>
+              <ion-label>Model</ion-label>
+              <ion-select formControlName="vehicleModel">
+                  <ion-select-option *ngFor="let model of models" value="{{model.Model_Name}}"> {{model.Model_Name}} </ion-select-option>
+                
+              </ion-select>
+            </ion-item>
 
               <!-- Vehicle License Plate -->
               <ion-item>
@@ -63,7 +60,6 @@
               </ion-button>
             </div>
           </form>
-        </ion-input>
       </ion-col>
     </ion-row>
 

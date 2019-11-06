@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { VehiclesService } from '../providers/vehicles.service';
 
@@ -9,6 +9,10 @@ import { VehiclesService } from '../providers/vehicles.service';
 })
 export class VehicleAddComponent implements OnInit {
   form: FormGroup;
+  makes: any;
+  models: any;
+  selectedModel: any;
+
 
   constructor(private formBuilder: FormBuilder, private vehicleService: VehiclesService) {}
 
@@ -19,6 +23,17 @@ export class VehicleAddComponent implements OnInit {
       vehicleMake: '',
       vehicleModel: '',
       vehiclePlate: '',
+  });
+
+    this.vehicleService.loadAllManufacturers().subscribe(data => {
+    this.makes = data['Results'];
+  });
+}
+  loadModels(make) {
+    console.log(make);
+    console.log(make.detail.value);
+    this.vehicleService.loadAllModels(make.detail.value).subscribe(data => {
+      this.models = data['Results'];
     });
   }
 
@@ -26,17 +41,17 @@ export class VehicleAddComponent implements OnInit {
     console.log(f);
     // this.vehicleService.addVehicle(f);
     let vehicle;
-    
+
     vehicle = {
       nickname: f.value.vehicleNickname,
       year: f.value.vehicleYear,
       make: f.value.vehicleMake,
       model: f.value.vehicleModel,
-      license_plate: f.value.vehiclePlate  
-    }
+      license_plate: f.value.vehiclePlate
+    };
 
-    this.vehicleService.addVehicle(vehicle).subscribe(data => { console.log(data)});
-    
+    this.vehicleService.addVehicle(vehicle).subscribe(data => { console.log(data);});
+
     this.form.reset();
   }
 }
