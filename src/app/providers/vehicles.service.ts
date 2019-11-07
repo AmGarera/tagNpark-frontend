@@ -14,7 +14,7 @@ export class VehiclesService {
   return this.http.get('https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json');
   }
 
-  loadAllModels(make) {
+  loadAllModels(make: string) {
   return this.http.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/${make}?format=json`);
   }
 
