@@ -4,6 +4,7 @@ import { tap } from "rxjs/operators";
 import { Observable, BehaviorSubject } from "rxjs";
 
 import { Storage } from "@ionic/storage";
+import { environment } from '../../environments/environment';
 import { User } from "../auth/user";
 import { AuthResponse } from "../auth/auth-response";
 
@@ -12,7 +13,7 @@ import { AuthResponse } from "../auth/auth-response";
 })
 export class AuthService {
   // AUTH_SERVER_ADDRESS = "https://tagnpark-docker.herokuapp.com";
-  AUTH_SERVER_ADDRESS = "http://localhost:3000";
+  AUTH_SERVER_ADDRESS = environment.base_url;
   authSubject = new BehaviorSubject(false);
 
   constructor(private httpClient: HttpClient, private storage: Storage) {}
