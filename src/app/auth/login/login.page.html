@@ -7,7 +7,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="primary" padding>
+<ion-content class="ion-padding">
+  <p *ngIf="auth.loading" class="ion-text-center">Loading...</p>
+  <ng-template [ngIf]="!auth.loading">
+    <!-- Not loading, not logged in: show login button -->
+    <ion-button
+      button
+      expand="block"
+      color="primary"
+      *ngIf="!auth.loggedIn"
+      (click)="auth.login()">Log In</ion-button>
+    <!-- Not loading, logged in: show profile and logout button -->
+    <ng-template [ngIf]="auth.loggedIn">
+      <ion-card *ngIf="auth.user">
+        <img [src]="auth.user.picture">
+        <ion-card-content>
+          <ion-card-title>{{ auth.user.name }}</ion-card-title>
+          <pre>{{ auth.user | json }}</pre>
+        </ion-card-content>
+      </ion-card>
+      <ion-button
+        button
+        expand="block"
+        color="danger"
+        (click)="auth.logout()">Log Out</ion-button>
+    </ng-template>
+  </ng-template>
+</ion-content>
+<!-- <ion-content color="primary" padding>
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
@@ -54,4 +81,4 @@
       </ion-row>
     </ion-grid>
   </form>
-</ion-content>
+</ion-content> -->

@@ -12,9 +12,9 @@ export class TabsPage implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.authSubject.subscribe( data => {
-      console.log(data);
-      this.edboolean = data;
-    });
+    // this.authService.authSubject.subscribe( data => {
+    //   console.log(data);
+    //   this.edboolean = data;
+    // });
   }
 }

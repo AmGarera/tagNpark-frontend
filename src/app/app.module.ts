@@ -1,3 +1,4 @@
+import { SafariViewController } from '@ionic-native/safari-view-controller/ngx';
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
@@ -14,6 +15,7 @@ import { AuthService } from "./providers/auth.service";
 import { AuthModule } from "./auth/auth.module";
 import { VehicleAddComponent } from "./vehicle-add/vehicle-add.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent, VehicleAddComponent],
@@ -21,6 +23,7 @@ import { ReactiveFormsModule } from "@angular/forms";
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AuthModule,
     AppRoutingModule,
     ReactiveFormsModule
@@ -28,6 +31,7 @@ import { ReactiveFormsModule } from "@angular/forms";
   providers: [
     StatusBar,
     SplashScreen,
+    SafariViewController,
     Camera,
     Geolocation,
     AuthService,
