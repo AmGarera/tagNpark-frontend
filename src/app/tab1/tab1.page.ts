@@ -10,13 +10,8 @@ export class Tab1Page {
   status: any;
 
   constructor(private authService: AuthService) {
-    this.authService.isLoggedIn()
-      .subscribe(arg => this.status = arg);
-    
   }
-    logout() {
-      this.authService.logout();
-    }
+    
 
 
 }

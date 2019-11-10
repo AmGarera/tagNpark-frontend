@@ -7,17 +7,11 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
-  constructor(private  authService: AuthService, private  router: Router) { }
+  constructor(public auth: AuthService, private  router: Router) { }
 
-  ngOnInit() {
-  }
 
-  login(form) {
-    this.authService.login(form.value).subscribe((res) => {
-      this.router.navigateByUrl('/');
-    });
-  }
+  
 
 }

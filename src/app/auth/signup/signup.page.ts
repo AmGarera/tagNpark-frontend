@@ -15,10 +15,5 @@ export class SignupPage implements OnInit {
 
   }
 
-  register(form) {
-    this.authService.register(form.value).subscribe((res) => {
-      this.router.navigateByUrl('/');
-    });
-  }
 
 }

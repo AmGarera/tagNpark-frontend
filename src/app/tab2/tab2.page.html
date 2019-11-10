@@ -15,9 +15,6 @@
     </ion-card-header>
   
     <ion-card-content>
-      
-      <!-- <h3 *ngIf="takenPicture">Latitude: {{locationCoordinates.latitude}}</h3>
-      <h3 *ngIf="takenPicture">Longitude: {{locationCoordinates.longitude}}</h3> -->
         <img #waterMarkedImage *ngIf="takenPicture"/>
       <ion-button (click)="takePicture()" color="primary">Take A Picture</ion-button>
       <ion-button (click)="clearPicture()" color="danger">Clear</ion-button>

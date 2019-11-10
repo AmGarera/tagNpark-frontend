@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>Add Vehicle</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+    <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <form [formGroup]="form" (ngSubmit)="submit(form)">
+            <ion-list lines="full" class="ion-no-margin ion-no-padding">
+              <!-- Vehicle Nickname -->
+              <ion-item>
+                <ion-label position="stacked">Nickname</ion-label>
+                <ion-input type="text" formControlName="vehicleNickname" required></ion-input>
+              </ion-item>
+
+              <!-- Vehicle Year -->
+              <ion-item>
+                <ion-label>Year</ion-label>
+                <ion-select formControlName="vehicleYear">
+                  <ion-select-option value="2009">2009</ion-select-option>
+                  <ion-select-option value="2004">2004</ion-select-option>
+                </ion-select>
+              </ion-item>
+            <!-- Vehicle Make -->
+            <ion-item>
+              <ion-label>Make</ion-label>
+              <ion-select formControlName="vehicleMake" (ionChange)="loadModels($event)">
+                <ion-select-option *ngFor="let item of makes" value="{{item.Make_Name}}"> {{item.Make_Name}} </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <!-- Vehicle Model -->
+            <ion-item>
+              <ion-label>Model</ion-label>
+              <ion-select formControlName="vehicleModel">
+                  <ion-select-option *ngFor="let model of models" value="{{model.Model_Name}}"> {{model.Model_Name}} </ion-select-option>
+                
+              </ion-select>
+            </ion-item>
+
+              <!-- Vehicle License Plate -->
+              <ion-item>
+                <ion-label position="stacked">License Plate #</ion-label>
+                <ion-input type="text" formControlName="vehiclePlate" required></ion-input>
+              </ion-item>
+            </ion-list>
+
+            <!-- Submit New Vehicle -->
+            <div class="ion-padding">
+              <ion-button
+                expand="block"
+                (click)="submit(form)"
+                class="ion-no-margin"
+              >
+                Add Vehicle
+              </ion-button>
+            </div>
+          </form>
+      </ion-col>
+    </ion-row>
+
+</ion-content>
+# replace TagNPark with your app identifier
+ionic cordova plugin add cordova-plugin-customurlscheme --variable URL_SCHEME=TagNPark --variable ANDROID_SCHEME=TagNPark --variable ANDROID_HOST=damgap.auth0.com --variable ANDROID_PATHPREFIX=/cordova/TagNPark/callback
