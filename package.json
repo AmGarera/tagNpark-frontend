@@ -31,10 +31,12 @@
     "@ionic/angular": "^4.7.1",
     "@ionic/storage": "^2.2.0",
     "auth0-js": "^9.11.3",
+    "cordova-android": "^8.1.0",
     "cordova-browser": "6.0.0",
     "cordova-ios": "^5.0.1",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-camera-preview": "^0.11.0",
+    "cordova-plugin-customurlscheme": "^4.4.0",
     "cordova-plugin-geolocation": "^4.0.2",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
@@ -90,10 +92,10 @@
       "cordova-plugin-geolocation": {},
       "cordova-plugin-safariviewcontroller": {},
       "cordova-plugin-customurlscheme": {
-        "URL_SCHEME": "TagNPark",
-        "ANDROID_SCHEME": "TagNPark",
+        "URL_SCHEME": "com.auth0.ionic",
+        "ANDROID_SCHEME": "com.auth0.ionic",
         "ANDROID_HOST": "damgap.auth0.com",
-        "ANDROID_PATHPREFIX": "/cordova/TagNPark/callback"
+        "ANDROID_PATHPREFIX": "/cordova/com.auth0.ionic/callback"
       }
     },
     "platforms": [
