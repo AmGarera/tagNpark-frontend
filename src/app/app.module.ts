@@ -16,6 +16,7 @@ import { AuthModule } from "./auth/auth.module";
 import { VehicleAddComponent } from "./vehicle-add/vehicle-add.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { IonicStorageModule } from '@ionic/storage';
+import { VehicleDashboardComponent } from './vehicle-dashboard/vehicle-dashboard.component';
 
 @NgModule({
   declarations: [AppComponent, VehicleAddComponent],
